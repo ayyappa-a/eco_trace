@@ -1,0 +1,56 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2fdf4;
+    color: #333;
+}
+
+h1, h2, h4 {
+    color: #198754; /* Bootstrap success green */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.btn-success {
+    background-color: #198754;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 12px;
+}
+
+.card-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.table th {
+    background-color: #d1f7d4;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.7em;
+    border-radius: 1em;
+}
+
+.alert {
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+}

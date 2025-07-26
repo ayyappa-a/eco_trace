@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 class="text-success mb-4">🌿 Leaderboard</h2>
+<p class="text-muted">Users with the lowest total emissions are ranked highest. Badge counts reflect their eco achievements!</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-success">
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Total Emissions (kg CO₂)</th>
+                <th>Badges Earned</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for user in leaderboard %}
+    <tr>
+        <td><strong>{{ loop.index }}</strong></td>
+        <td>{{ user.username }}</td>
+        <td>
+            <span class="fw-bold {% if user.total_emission < 10 %}text-success{% elif user.total_emission < 50 %}text-warning{% else %}text-danger{% endif %}">
+                {{ '%.2f' % user.total_emission }}
+            </span>
+        </td>
+        <td>
+            {% if user.badges > 0 %}
+                <span class="badge bg-warning text-dark">{{ user.badges }}</span>
+            {% else %}
+                <span class="badge bg-secondary">0</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+    </table>
+</div>
+{% endblock %}

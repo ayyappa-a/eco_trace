@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 class="text-success mb-4">Your Eco Dashboard</h2>
+
+<div class="row">
+    <!-- Log New Activity -->
+    <div class="col-md-6">
+        <div class="card border-success mb-4">
+            <div class="card-header bg-success text-white">Log New Activity</div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('dashboard') }}">
+                    <div class="mb-3">
+                        <label class="form-label">Activity Type</label>
+                        <select class="form-select" name="activity_type" required>
+                            <option value="">Select an activity</option>
+                            <option value="car">Car Travel (km)</option>
+                            <option value="bus">Bus Travel (km)</option>
+                            <option value="electricity">Electricity (kWh)</option>
+                            <option value="vegetarian_meal">Vegetarian Meal</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" step="any" name="quantity" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Log Activity</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emissions Summary & Badges -->
+    <div class="col-md-6">
+        <div class="card border-info mb-4">
+            <div class="card-header bg-info text-white">Emissions Summary</div>
+            <div class="card-body">
+                <h4>Total Emissions:</h4>
+                <p class="fs-4"><strong>{{ total_emissions }} kg CO₂</strong></p>
+            </div>
+        </div>
+
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-dark">Your Badges</div>
+            <div class="card-body">
+                {% if badges %}
+                    <ul class="list-group">
+                        {% for badge in badges %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ badge.badge_name }}
+                                <small class="text-muted">{{ badge.earned_on.strftime('%b %d, %Y') }}</small>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You haven’t earned any badges yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center text-success mb-4">Login to EcoTrace</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Login</button>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-secondary">Don't have an account?</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
